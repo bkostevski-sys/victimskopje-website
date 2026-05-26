@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VICTIM Skopje | Support for Victims</title>
+  <meta name="description" content="VICTIM Skopje - Association for support of identified and potentially vulnerable groups." />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  
+  <link rel="icon" href="Logo Victim Small.png" type="image/png" />
+  
+  <style>
+    .hero-bg {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.78)), 
+                  url('hero.jpg') center/cover no-repeat fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 30px -5px rgb(0 0 0 / 0.1);
+    }
+  </style>
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-800">
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="Logo Victim Small.png" alt="VICTIM Skopje" class="h-14">
+        <div>
+          <h1 class="text-2xl font-bold text-indigo-700">VICTIM Skopje</h1>
+          <p class="text-xs text-gray-500" data-key="tagline">Association for Support of Victims</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-lg">
+        <a href="#home" class="hover:text-indigo-600 font-medium" data-key="nav-home">Home</a>
+        <a href="#about" class="hover:text-indigo-600 font-medium" data-key="nav-about">About Us</a>
+        <a href="#programs" class="hover:text-indigo-600 font-medium" data-key="nav-programs">Programs</a>
+        <a href="#help" class="hover:text-indigo-600 font-medium" data-key="nav-help">Get Help</a>
+        <a href="#donate" class="hover:text-indigo-600 font-medium" data-key="nav-donate">Donate</a>
+        <a href="#contact" class="hover:text-indigo-600 font-medium" data-key="nav-contact">Contact</a>
+      </nav>
+
+      <button onclick="toggleLanguage()" id="lang-toggle"
+        class="px-5 py-2.5 rounded-full border border-gray-300 hover:bg-gray-100 font-medium flex items-center gap-2 text-sm">
+        <span id="current-lang">🇲🇰 Македонски</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero-bg text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6" data-key="hero-title">
+        You are not alone.<br><span class="text-indigo-300">We are here for you.</span>
+      </h1>
+      <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-gray-100" data-key="hero-subtitle">
+        Professional support, protection and empowerment for victims of violence, human trafficking and vulnerable groups.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-5 justify-center">
+        <a href="#help" class="bg-white text-indigo-700 hover:bg-indigo-50 px-10 py-5 rounded-2xl font-semibold text-xl transition" data-key="btn-gethelp">
+          Get Help Now
+        </a>
+        <a href="#donate" class="border-2 border-white text-white hover:bg-white hover:text-indigo-700 px-10 py-5 rounded-2xl font-semibold text-xl transition" data-key="btn-donate">
+          Donate
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12" data-key="about-title">About Us</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-lg leading-relaxed text-gray-600 mb-8" data-key="about-text">
+            <strong>VICTIM Skopje</strong> is an association founded from the doctoral research of our president, Dr. Dragana Kostevska. It emerged from her deep commitment to understanding and combating the victimization of vulnerable groups, especially the elderly.
+          </p>
+          <div class="space-y-6 text-gray-700">
+            <p data-key="mission"><strong>Mission:</strong> To provide professional support, protection, empowerment and reintegration for identified and potentially vulnerable groups — victims of violence, human trafficking, elderly people, women, children and persons with disabilities.</p>
+            <p data-key="history"><strong>History:</strong> Established as a result of many years of research by Dr. Dragana Kostevska. We have implemented projects such as “Rehabilitation of Female Prisoners” (2021) and “Applied Methods for Prevention of Victimization among Youth” (2022) in Ohrid.</p>
+          </div>
+        </div>
+        <div class="bg-indigo-50 p-10 rounded-3xl">
+          <div class="grid grid-cols-2 gap-8 text-center">
+            <div>
+              <div class="text-5xl font-bold text-indigo-600">500+</div>
+              <div class="mt-2 text-gray-600" data-key="stat1">People Supported</div>
+            </div>
+            <div>
+              <div class="text-5xl font-bold text-indigo-600">100+</div>
+              <div class="mt-2 text-gray-600" data-key="stat2">Successful Cases</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs" class="py-20 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12" data-key="programs-title">Our Programs</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl card-hover transition">
+          <i class="fas fa-hand-holding-heart text-5xl text-indigo-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3" data-key="prog1-title">Psychological Support</h3>
+          <p class="text-gray-600" data-key="prog1-desc">Counseling, crisis intervention and emotional support.</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl card-hover transition">
+          <i class="fas fa-gavel text-5xl text-indigo-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3" data-key="prog2-title">Legal Aid</h3>
+          <p class="text-gray-600" data-key="prog2-desc">Legal representation and assistance in procedures.</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl card-hover transition">
+          <i class="fas fa-users text-5xl text-indigo-600 mb-6"></i>
+          <h3 class="text-2xl font-semibold mb-3" data-key="prog3-title">Reintegration</h3>
+          <p class="text-gray-600" data-key="prog3-desc">Support for returning to a normal life and society.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELP -->
+  <section id="help" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8" data-key="help-title">Get Help</h2>
+      <div class="bg-red-50 border-2 border-red-200 p-12 rounded-3xl">
+        <p class="text-3xl font-semibold text-red-700 mb-4" data-key="hotline">24/7 Hotline</p>
+        <a href="tel:+38975255154" class="text-5xl font-bold text-red-600 hover:text-red-700">075 255 154</a>
+        <p class="mt-6 text-gray-600" data-key="confidential">Calls are <strong>anonymous</strong> and fully <strong>confidential</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate" class="py-20 bg-indigo-700 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-6" data-key="donate-title">Your Donation Saves Lives</h2>
+      <p class="text-xl mb-10" data-key="donate-text">Help us continue providing support to victims of violence and exploitation.</p>
+      
+      <form action="https://formspree.io/f/mgegrjvo" method="POST" class="max-w-md mx-auto">
+        <div class="grid grid-cols-3 gap-4 mb-6">
+          <button type="button" onclick="setAmount(10)" class="amount-btn bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">10€</button>
+          <button type="button" onclick="setAmount(25)" class="amount-btn bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">25€</button>
+          <button type="button" onclick="setAmount(50)" class="amount-btn bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">50€</button>
+        </div>
+        <input type="number" id="donation-amount" name="amount" placeholder="Other amount" class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-5 text-center text-2xl mb-6">
+        <button type="submit" class="w-full bg-white text-indigo-700 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100" data-key="btn-donate-now">
+          Donate Now
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12" data-key="contact-title">Contact Us</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-gray-400 mb-8" data-key="contact-desc">We are always here to help.</p>
+          <p class="mb-4"><strong data-key="phone">Phone:</strong> <a href="tel:+38975255154" class="text-indigo-400">075 255 154</a></p>
+          <p><strong data-key="email">Email:</strong> <a href="mailto:victimskopje@gmail.com" class="text-indigo-400">victimskopje@gmail.com</a></p>
+        </div>
+        <form action="https://formspree.io/f/mgegrjvo" method="POST" class="space-y-6">
+          <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4">
+          <input type="email" name="email" placeholder="Your Email" required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4">
+          <textarea name="message" rows="5" placeholder="Your Message..." required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4"></textarea>
+          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 py-5 rounded-2xl font-semibold text-lg" data-key="btn-send">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-black text-gray-400 py-10 text-center">
+    <p data-key="footer">&copy; 2026 VICTIM Skopje — Association for Support of Victims. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "tagline": "Association for Support of Victims",
+        "nav-home": "Home",
+        "nav-about": "About Us",
+        "nav-programs": "Programs",
+        "nav-help": "Get Help",
+        "nav-donate": "Donate",
+        "nav-contact": "Contact",
+        "hero-title": "You are not alone.<br><span class='text-indigo-300'>We are here for you.</span>",
+        "hero-subtitle": "Professional support, protection and empowerment for victims of violence, human trafficking and vulnerable groups.",
+        "btn-gethelp": "Get Help Now",
+        "btn-donate": "Donate",
+        "about-title": "About Us",
+        "about-text": "<strong>VICTIM Skopje</strong> is an association founded from the doctoral research of our president, Dr. Dragana Kostevska.",
+        "mission": "<strong>Mission:</strong> To provide professional support, protection, empowerment and reintegration for identified and potentially vulnerable groups.",
+        "history": "<strong>History:</strong> Established as a result of many years of research by Dr. Dragana Kostevska.",
+        "stat1": "People Supported",
+        "stat2": "Successful Cases",
+        "programs-title": "Our Programs",
+        "prog1-title": "Psychological Support",
+        "prog1-desc": "Counseling, crisis intervention and emotional support.",
+        "prog2-title": "Legal Aid",
+        "prog2-desc": "Legal representation and assistance in procedures.",
+        "prog3-title": "Reintegration",
+        "prog3-desc": "Support for returning to a normal life and society.",
+        "help-title": "Get Help",
+        "hotline": "24/7 Hotline",
+        "confidential": "Calls are <strong>anonymous</strong> and fully <strong>confidential</strong>.",
+        "donate-title": "Your Donation Saves Lives",
+        "donate-text": "Help us continue providing support to victims of violence and exploitation.",
+        "btn-donate-now": "Donate Now",
+        "contact-title": "Contact Us",
+        "contact-desc": "We are always here to help.",
+        "phone": "Phone:",
+        "email": "Email:",
+        "btn-send": "Send Message",
+        "footer": "© 2026 VICTIM Skopje — Association for Support of Victims. All rights reserved."
+      },
+      mk: {
+        "tagline": "Здружение за поддршка на жртви",
+        "nav-home": "Почетна",
+        "nav-about": "За нас",
+        "nav-programs": "Програми",
+        "nav-help": "Помош",
+        "nav-donate": "Донирај",
+        "nav-contact": "Контакт",
+        "hero-title": "Не си сама/сам.<br><span class='text-indigo-300'>Ние сме тука за тебе.</span>",
+        "hero-subtitle": "Професионална поддршка, заштита и еманципација за жртви на насилство, трговија со луѓе и ранливи групи.",
+        "btn-gethelp": "Барај помош сега",
+        "btn-donate": "Донирај",
+        "about-title": "За Нас",
+        "about-text": "<strong>VICTIM Skopje</strong> е здружение основано врз основа на докторското истражување на нашата претседателка, д-р Драгана Костевска.",
+        "mission": "<strong>Мисија:</strong> Да обезбедиме професионална поддршка, заштита, еманципација и реинтеграција на идентификувани и потенцијално ранливи групи.",
+        "history": "<strong>Историја:</strong> Основана како резултат на повеќегодишно истражување на д-р Драгана Костевска.",
+        "stat1": "Поддржани лица",
+        "stat2": "Успешни случаи",
+        "programs-title": "Наши Програми",
+        "prog1-title": "Психолошка поддршка",
+        "prog1-desc": "Советување, кризна интервенција и емоционална поддршка.",
+        "prog2-title": "Правна помош",
+        "prog2-desc": "Правно застапување и помош во постапки.",
+        "prog3-title": "Реинтеграција",
+        "prog3-desc": "Поддршка за враќање во нормален живот и општество.",
+        "help-title": "Барај Помош",
+        "hotline": "24/7 Хотлајн",
+        "confidential": "Повикот е <strong>анонимен</strong> и целосно <strong>доверлив</strong>.",
+        "donate-title": "Твојата донација спасува животи",
+        "donate-text": "Помогни ни да продолжиме да им обезбедуваме поддршка на жртвите.",
+        "btn-donate-now": "Донирај сега",
+        "contact-title": "Контактирај не",
+        "contact-desc": "Секогаш сме тука да помогнеме.",
+        "phone": "Телефон:",
+        "email": "Е-маил:",
+        "btn-send": "Испрати порака",
+        "footer": "© 2026 VICTIM Skopje — Здружение за поддршка на жртви. Сите права задржани."
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'mk' : 'en';
+      document.getElementById('current-lang').textContent = currentLang === 'en' ? '🇲🇰 Македонски' : '🇬🇧 English';
+
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (translations[currentLang][key]) {
+          el.innerHTML = translations[currentLang][key];
+        }
+      });
+    }
+
+    function setAmount(val) {
+      document.getElementById('donation-amount').value = val;
+    }
+  </script>
+</body>
+</html>
