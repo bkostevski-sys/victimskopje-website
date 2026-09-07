@@ -8,96 +8,131 @@
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-  
   <link rel="icon" href="Logo Victim Small.png" type="image/png" />
   
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
     .hero-bg {
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.78)), 
-                  url('hero.jpg') center/cover no-repeat fixed;
+      background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.82)), 
+                  url('hero.jpg') center/cover no-repeat;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
     }
     .card-hover:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 25px 30px -5px rgb(0 0 0 / 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
     }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 
-<body class="font-sans bg-gray-50 text-gray-800">
+<body class="font-sans bg-slate-50 text-slate-800 antialiased">
   <!-- HEADER -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+  <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <img src="Logo Victim Small.png" alt="VICTIM Skopje" class="h-14">
+        <img src="Logo Victim Small.png" alt="VICTIM Skopje" class="h-12 md:h-14">
         <div>
-          <h1 class="text-2xl font-bold text-indigo-700">VICTIM Skopje</h1>
-          <p class="text-xs text-gray-500" data-key="tagline">Association for Support of Victims</p>
+          <h1 class="text-xl md:text-2xl font-bold text-primary-700 leading-tight">VICTIM Skopje</h1>
+          <p class="text-xs text-slate-500 hidden sm:block" data-key="tagline">Association for Support of Victims</p>
         </div>
       </div>
 
-      <nav class="hidden md:flex items-center gap-8 text-lg">
-        <a href="#home" class="hover:text-indigo-600 font-medium" data-key="nav-home">Home</a>
-        <a href="#about" class="hover:text-indigo-600 font-medium" data-key="nav-about">About Us</a>
-        <a href="#programs" class="hover:text-indigo-600 font-medium" data-key="nav-programs">Programs</a>
-        <a href="#help" class="hover:text-indigo-600 font-medium" data-key="nav-help">Get Help</a>
-        <a href="#donate" class="hover:text-indigo-600 font-medium" data-key="nav-donate">Donate</a>
-        <a href="#contact" class="hover:text-indigo-600 font-medium" data-key="nav-contact">Contact</a>
+      <nav class="hidden lg:flex items-center gap-8 text-[15px] font-medium">
+        <a href="#home" class="hover:text-primary-600 transition" data-key="nav-home">Home</a>
+        <a href="#about" class="hover:text-primary-600 transition" data-key="nav-about">About Us</a>
+        <a href="#programs" class="hover:text-primary-600 transition" data-key="nav-programs">Programs</a>
+        <a href="#projects" class="hover:text-primary-600 transition" data-key="nav-projects">Projects</a>
+        <a href="#help" class="hover:text-primary-600 transition" data-key="nav-help">Get Help</a>
+        <a href="#donate" class="hover:text-primary-600 transition" data-key="nav-donate">Donate</a>
+        <a href="#contact" class="hover:text-primary-600 transition" data-key="nav-contact">Contact</a>
       </nav>
 
-      <button onclick="toggleLanguage()" id="lang-toggle"
-        class="px-5 py-2.5 rounded-full border border-gray-300 hover:bg-gray-100 font-medium flex items-center gap-2 text-sm">
-        <span id="current-lang">🇲🇰 Македонски</span>
-      </button>
+      <div class="flex items-center gap-3">
+        <button onclick="toggleLanguage()" class="px-4 py-2 rounded-full border border-slate-200 hover:bg-slate-50 text-sm font-medium flex items-center gap-2 transition">
+          <span id="current-lang">🇲🇰 Македонски</span>
+        </button>
+        <button onclick="toggleMobileMenu()" class="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-slate-100">
+          <i id="menu-icon" class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-100 bg-white">
+      <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-1">
+        <a href="#home" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-home">Home</a>
+        <a href="#about" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-about">About Us</a>
+        <a href="#programs" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-programs">Programs</a>
+        <a href="#projects" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-projects">Projects</a>
+        <a href="#help" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-help">Get Help</a>
+        <a href="#donate" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-donate">Donate</a>
+        <a href="#contact" onclick="closeMobileMenu()" class="py-3 px-4 rounded-xl hover:bg-slate-50 font-medium" data-key="nav-contact">Contact</a>
+      </div>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="hero-bg text-white">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6" data-key="hero-title">
+  <section id="home" class="hero-bg text-white flex items-center">
+    <div class="max-w-5xl mx-auto px-6 py-24 text-center">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6" data-key="hero-title">
         You are not alone.<br><span class="text-indigo-300">We are here for you.</span>
       </h1>
-      <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 text-gray-100" data-key="hero-subtitle">
+      <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-slate-200" data-key="hero-subtitle">
         Professional support, protection and empowerment for victims of violence, human trafficking and vulnerable groups.
       </p>
-      
-      <div class="flex flex-col sm:flex-row gap-5 justify-center">
-        <a href="#help" class="bg-white text-indigo-700 hover:bg-indigo-50 px-10 py-5 rounded-2xl font-semibold text-xl transition" data-key="btn-gethelp">
-          Get Help Now
-        </a>
-        <a href="#donate" class="border-2 border-white text-white hover:bg-white hover:text-indigo-700 px-10 py-5 rounded-2xl font-semibold text-xl transition" data-key="btn-donate">
-          Donate
-        </a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#help" class="bg-white text-primary-700 hover:bg-indigo-50 px-8 py-4 rounded-2xl font-semibold text-lg transition shadow-lg" data-key="btn-gethelp">Get Help Now</a>
+        <a href="#donate" class="border-2 border-white/80 text-white hover:bg-white hover:text-primary-700 px-8 py-4 rounded-2xl font-semibold text-lg transition" data-key="btn-donate">Donate</a>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="py-20 bg-white">
+  <section id="about" class="py-20 md:py-28 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12" data-key="about-title">About Us</h2>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="about-title">About Us</h2>
+        <div class="w-20 h-1.5 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-lg leading-relaxed text-gray-600 mb-8" data-key="about-text">
+          <p class="text-lg text-slate-600 mb-8" data-key="about-text">
             <strong>VICTIM Skopje</strong> is an association founded from the doctoral research of our president, Dr. Dragana Kostevska. It emerged from her deep commitment to understanding and combating the victimization of vulnerable groups, especially the elderly.
           </p>
-          <div class="space-y-6 text-gray-700">
-            <p data-key="mission"><strong>Mission:</strong> To provide professional support, protection, empowerment and reintegration for identified and potentially vulnerable groups — victims of violence, human trafficking, elderly people, women, children and persons with disabilities.</p>
-            <p data-key="history"><strong>History:</strong> Established as a result of many years of research by Dr. Dragana Kostevska. We have implemented projects such as “Rehabilitation of Female Prisoners” (2021) and “Applied Methods for Prevention of Victimization among Youth” (2022) in Ohrid.</p>
+          <div class="space-y-5 text-slate-700">
+            <p data-key="mission"><strong class="text-primary-700">Mission:</strong> To provide professional support, protection, empowerment and reintegration for identified and potentially vulnerable groups.</p>
+            <p data-key="history"><strong class="text-primary-700">History:</strong> Established as a result of many years of research by Dr. Dragana Kostevska.</p>
           </div>
         </div>
-        <div class="bg-indigo-50 p-10 rounded-3xl">
+        <div class="bg-gradient-to-br from-primary-50 to-indigo-100 p-10 rounded-3xl">
           <div class="grid grid-cols-2 gap-8 text-center">
             <div>
-              <div class="text-5xl font-bold text-indigo-600">500+</div>
-              <div class="mt-2 text-gray-600" data-key="stat1">People Supported</div>
+              <div class="text-4xl md:text-5xl font-bold text-primary-700">500+</div>
+              <div class="mt-2 text-slate-600 font-medium" data-key="stat1">People Supported</div>
             </div>
             <div>
-              <div class="text-5xl font-bold text-indigo-600">100+</div>
-              <div class="mt-2 text-gray-600" data-key="stat2">Successful Cases</div>
+              <div class="text-4xl md:text-5xl font-bold text-primary-700">100+</div>
+              <div class="mt-2 text-slate-600 font-medium" data-key="stat2">Successful Cases</div>
             </div>
           </div>
         </div>
@@ -106,83 +141,157 @@
   </section>
 
   <!-- PROGRAMS -->
-  <section id="programs" class="py-20 bg-gray-100">
+  <section id="programs" class="py-20 md:py-28 bg-slate-50">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12" data-key="programs-title">Our Programs</h2>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="programs-title">Our Programs</h2>
+        <div class="w-20 h-1.5 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-3xl card-hover transition">
-          <i class="fas fa-hand-holding-heart text-5xl text-indigo-600 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3" data-key="prog1-title">Psychological Support</h3>
-          <p class="text-gray-600" data-key="prog1-desc">Counseling, crisis intervention and emotional support.</p>
+        <div class="bg-white p-8 rounded-3xl shadow-sm card-hover border border-slate-100">
+          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-hand-holding-heart text-3xl text-primary-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-key="prog1-title">Psychological Support</h3>
+          <p class="text-slate-600" data-key="prog1-desc">Counseling, crisis intervention and emotional support for survivors.</p>
         </div>
-        <div class="bg-white p-8 rounded-3xl card-hover transition">
-          <i class="fas fa-gavel text-5xl text-indigo-600 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3" data-key="prog2-title">Legal Aid</h3>
-          <p class="text-gray-600" data-key="prog2-desc">Legal representation and assistance in procedures.</p>
+        <div class="bg-white p-8 rounded-3xl shadow-sm card-hover border border-slate-100">
+          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-gavel text-3xl text-primary-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-key="prog2-title">Legal Aid</h3>
+          <p class="text-slate-600" data-key="prog2-desc">Legal representation and assistance throughout all procedures.</p>
         </div>
-        <div class="bg-white p-8 rounded-3xl card-hover transition">
-          <i class="fas fa-users text-5xl text-indigo-600 mb-6"></i>
-          <h3 class="text-2xl font-semibold mb-3" data-key="prog3-title">Reintegration</h3>
-          <p class="text-gray-600" data-key="prog3-desc">Support for returning to a normal life and society.</p>
+        <div class="bg-white p-8 rounded-3xl shadow-sm card-hover border border-slate-100">
+          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6">
+            <i class="fas fa-users text-3xl text-primary-600"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-key="prog3-title">Reintegration</h3>
+          <p class="text-slate-600" data-key="prog3-desc">Support for returning to a normal life and society with dignity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (Portfolio) -->
+  <section id="projects" class="py-20 md:py-28 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="projects-title">Our Projects</h2>
+        <div class="w-20 h-1.5 bg-primary-600 mx-auto rounded-full"></div>
+        <p class="mt-4 text-slate-600 max-w-2xl mx-auto" data-key="projects-subtitle">Selected projects that demonstrate our commitment and impact.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-primary-100 text-primary-700 text-sm font-semibold px-4 py-1.5 rounded-full">2021</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-key="proj1-title">Rehabilitation of Female Prisoners</h3>
+          <p class="text-slate-600 mb-4" data-key="proj1-desc">
+            Project implemented in cooperation with the Directorate for Execution of Sanctions of the Republic of North Macedonia, focused on rehabilitation and support of women in prison.
+          </p>
+          <p class="text-sm text-slate-500" data-key="proj1-partner">Partner: Directorate for Execution of Sanctions</p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="bg-primary-100 text-primary-700 text-sm font-semibold px-4 py-1.5 rounded-full">2022</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3" data-key="proj2-title">Prevention of Victimization among Youth</h3>
+          <p class="text-slate-600 mb-4" data-key="proj2-desc">
+            Applied methods for prevention of victimization among young people in the Municipality of Ohrid. Funded by the EU through the ReLOaD2 programme implemented by UNDP.
+          </p>
+          <p class="text-sm text-slate-500" data-key="proj2-partner">Funded by: EU / UNDP – ReLOaD2</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- HELP -->
-  <section id="help" class="py-20 bg-white">
+  <section id="help" class="py-20 md:py-28 bg-slate-50">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-8" data-key="help-title">Get Help</h2>
-      <div class="bg-red-50 border-2 border-red-200 p-12 rounded-3xl">
-        <p class="text-3xl font-semibold text-red-700 mb-4" data-key="hotline">24/7 Hotline</p>
-        <a href="tel:+38975255154" class="text-5xl font-bold text-red-600 hover:text-red-700">075 255 154</a>
-        <p class="mt-6 text-gray-600" data-key="confidential">Calls are <strong>anonymous</strong> and fully <strong>confidential</strong>.</p>
+      <div class="mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="help-title">Get Help</h2>
+        <div class="w-20 h-1.5 bg-primary-600 mx-auto rounded-full"></div>
+      </div>
+      <div class="bg-red-50 border-2 border-red-100 p-10 md:p-14 rounded-3xl">
+        <p class="text-2xl md:text-3xl font-semibold text-red-700 mb-5" data-key="hotline">24/7 Hotline</p>
+        <a href="tel:+38975261479" class="text-4xl md:text-5xl font-bold text-red-600 hover:text-red-700 transition">
+          075 261 479
+        </a>
+        <p class="mt-6 text-slate-600 text-lg" data-key="confidential">
+          Calls are <strong>anonymous</strong> and fully <strong>confidential</strong>.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- DONATE -->
-  <section id="donate" class="py-20 bg-indigo-700 text-white">
+  <section id="donate" class="py-20 md:py-28 bg-primary-700 text-white">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-6" data-key="donate-title">Your Donation Saves Lives</h2>
-      <p class="text-xl mb-10" data-key="donate-text">Help us continue providing support to victims of violence and exploitation.</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-5" data-key="donate-title">Your Donation Saves Lives</h2>
+      <p class="text-lg md:text-xl mb-12 text-indigo-100" data-key="donate-text">Help us continue providing support to victims of violence and exploitation.</p>
       
       <form action="https://formspree.io/f/mgegrjvo" method="POST" class="max-w-md mx-auto">
-        <div class="grid grid-cols-3 gap-4 mb-6">
-          <button type="button" onclick="setAmount(10)" class="amount-btn bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">10€</button>
-          <button type="button" onclick="setAmount(25)" class="amount-btn bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">25€</button>
-          <button type="button" onclick="setAmount(50)" class="amount-btn bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">50€</button>
+        <div class="grid grid-cols-3 gap-3 mb-5">
+          <button type="button" onclick="setAmount(10)" class="bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">10€</button>
+          <button type="button" onclick="setAmount(25)" class="bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">25€</button>
+          <button type="button" onclick="setAmount(50)" class="bg-white/10 hover:bg-white/20 py-4 rounded-2xl font-medium">50€</button>
         </div>
-        <input type="number" id="donation-amount" name="amount" placeholder="Other amount" class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-5 text-center text-2xl mb-6">
-        <button type="submit" class="w-full bg-white text-indigo-700 py-5 rounded-2xl font-bold text-xl hover:bg-gray-100" data-key="btn-donate-now">
-          Donate Now
-        </button>
+        <input type="number" id="donation-amount" name="amount" placeholder="Other amount" class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-4 text-center text-xl mb-5 placeholder-white/60">
+        <button type="submit" class="w-full bg-white text-primary-700 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-50" data-key="btn-donate-now">Donate Now</button>
       </form>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-20 bg-gray-900 text-white">
+  <section id="contact" class="py-20 md:py-28 bg-slate-900 text-white">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12" data-key="contact-title">Contact Us</h2>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" data-key="contact-title">Contact Us</h2>
+        <div class="w-20 h-1.5 bg-primary-500 mx-auto rounded-full"></div>
+      </div>
       <div class="grid md:grid-cols-2 gap-12">
         <div>
-          <p class="text-gray-400 mb-8" data-key="contact-desc">We are always here to help.</p>
-          <p class="mb-4"><strong data-key="phone">Phone:</strong> <a href="tel:+38975255154" class="text-indigo-400">075 255 154</a></p>
-          <p><strong data-key="email">Email:</strong> <a href="mailto:victimskopje@gmail.com" class="text-indigo-400">victimskopje@gmail.com</a></p>
+          <p class="text-slate-400 mb-8 text-lg" data-key="contact-desc">We are always here to help.</p>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center">
+                <i class="fas fa-phone text-primary-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400 mb-1" data-key="phone">Phone</p>
+                <a href="tel:+38975261479" class="text-lg font-medium hover:text-primary-300">075 261 479</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center">
+                <i class="fas fa-envelope text-primary-400"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-400 mb-1" data-key="email">Email</p>
+                <a href="mailto:victimskopje@gmail.com" class="text-lg font-medium hover:text-primary-300">victimskopje@gmail.com</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <form action="https://formspree.io/f/mgegrjvo" method="POST" class="space-y-6">
-          <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4">
-          <input type="email" name="email" placeholder="Your Email" required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4">
-          <textarea name="message" rows="5" placeholder="Your Message..." required class="w-full bg-gray-800 border border-gray-700 rounded-2xl px-6 py-4"></textarea>
-          <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 py-5 rounded-2xl font-semibold text-lg" data-key="btn-send">Send Message</button>
+        <form action="https://formspree.io/f/mgegrjvo" method="POST" class="space-y-5">
+          <input type="text" name="name" placeholder="Your Name" required class="w-full bg-slate-800 border border-slate-700 rounded-2xl px-5 py-4">
+          <input type="email" name="email" placeholder="Your Email" required class="w-full bg-slate-800 border border-slate-700 rounded-2xl px-5 py-4">
+          <textarea name="message" rows="5" placeholder="Your Message..." required class="w-full bg-slate-800 border border-slate-700 rounded-2xl px-5 py-4"></textarea>
+          <button type="submit" class="w-full bg-primary-600 hover:bg-primary-500 py-4 rounded-2xl font-semibold text-lg" data-key="btn-send">Send Message</button>
         </form>
       </div>
     </div>
   </section>
 
-  <footer class="bg-black text-gray-400 py-10 text-center">
-    <p data-key="footer">&copy; 2026 VICTIM Skopje — Association for Support of Victims. All rights reserved.</p>
+  <footer class="bg-black text-slate-400 py-10">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p data-key="footer">&copy; 2026 VICTIM Skopje — Association for Support of Victims. All rights reserved.</p>
+    </div>
   </footer>
 
   <script>
@@ -192,6 +301,7 @@
         "nav-home": "Home",
         "nav-about": "About Us",
         "nav-programs": "Programs",
+        "nav-projects": "Projects",
         "nav-help": "Get Help",
         "nav-donate": "Donate",
         "nav-contact": "Contact",
@@ -200,18 +310,26 @@
         "btn-gethelp": "Get Help Now",
         "btn-donate": "Donate",
         "about-title": "About Us",
-        "about-text": "<strong>VICTIM Skopje</strong> is an association founded from the doctoral research of our president, Dr. Dragana Kostevska.",
-        "mission": "<strong>Mission:</strong> To provide professional support, protection, empowerment and reintegration for identified and potentially vulnerable groups.",
-        "history": "<strong>History:</strong> Established as a result of many years of research by Dr. Dragana Kostevska.",
+        "about-text": "<strong>VICTIM Skopje</strong> is an association founded from the doctoral research of our president, Dr. Dragana Kostevska. It emerged from her deep commitment to understanding and combating the victimization of vulnerable groups, especially the elderly.",
+        "mission": "<strong class='text-primary-700'>Mission:</strong> To provide professional support, protection, empowerment and reintegration for identified and potentially vulnerable groups.",
+        "history": "<strong class='text-primary-700'>History:</strong> Established as a result of many years of research by Dr. Dragana Kostevska.",
         "stat1": "People Supported",
         "stat2": "Successful Cases",
         "programs-title": "Our Programs",
         "prog1-title": "Psychological Support",
-        "prog1-desc": "Counseling, crisis intervention and emotional support.",
+        "prog1-desc": "Counseling, crisis intervention and emotional support for survivors.",
         "prog2-title": "Legal Aid",
-        "prog2-desc": "Legal representation and assistance in procedures.",
+        "prog2-desc": "Legal representation and assistance throughout all procedures.",
         "prog3-title": "Reintegration",
-        "prog3-desc": "Support for returning to a normal life and society.",
+        "prog3-desc": "Support for returning to a normal life and society with dignity.",
+        "projects-title": "Our Projects",
+        "projects-subtitle": "Selected projects that demonstrate our commitment and impact.",
+        "proj1-title": "Rehabilitation of Female Prisoners",
+        "proj1-desc": "Project implemented in cooperation with the Directorate for Execution of Sanctions of the Republic of North Macedonia, focused on rehabilitation and support of women in prison.",
+        "proj1-partner": "Partner: Directorate for Execution of Sanctions",
+        "proj2-title": "Prevention of Victimization among Youth",
+        "proj2-desc": "Applied methods for prevention of victimization among young people in the Municipality of Ohrid. Funded by the EU through the ReLOaD2 programme implemented by UNDP.",
+        "proj2-partner": "Funded by: EU / UNDP – ReLOaD2",
         "help-title": "Get Help",
         "hotline": "24/7 Hotline",
         "confidential": "Calls are <strong>anonymous</strong> and fully <strong>confidential</strong>.",
@@ -220,8 +338,8 @@
         "btn-donate-now": "Donate Now",
         "contact-title": "Contact Us",
         "contact-desc": "We are always here to help.",
-        "phone": "Phone:",
-        "email": "Email:",
+        "phone": "Phone",
+        "email": "Email",
         "btn-send": "Send Message",
         "footer": "© 2026 VICTIM Skopje — Association for Support of Victims. All rights reserved."
       },
@@ -230,6 +348,7 @@
         "nav-home": "Почетна",
         "nav-about": "За нас",
         "nav-programs": "Програми",
+        "nav-projects": "Проекти",
         "nav-help": "Помош",
         "nav-donate": "Донирај",
         "nav-contact": "Контакт",
@@ -238,18 +357,26 @@
         "btn-gethelp": "Барај помош сега",
         "btn-donate": "Донирај",
         "about-title": "За Нас",
-        "about-text": "<strong>VICTIM Skopje</strong> е здружение основано врз основа на докторското истражување на нашата претседателка, д-р Драгана Костевска.",
-        "mission": "<strong>Мисија:</strong> Да обезбедиме професионална поддршка, заштита, еманципација и реинтеграција на идентификувани и потенцијално ранливи групи.",
-        "history": "<strong>Историја:</strong> Основана како резултат на повеќегодишно истражување на д-р Драгана Костевска.",
+        "about-text": "<strong>VICTIM Skopje</strong> е здружение основано врз основа на докторското истражување на нашата претседателка, д-р Драгана Костевска. Идејата произлегува од нејзината длабока посветеност за разбирање и борба против виктимизацијата на ранливите групи, особено старите лица.",
+        "mission": "<strong class='text-primary-700'>Мисија:</strong> Да обезбедиме професионална поддршка, заштита, еманципација и реинтеграција на идентификувани и потенцијално ранливи групи.",
+        "history": "<strong class='text-primary-700'>Историја:</strong> Основана како резултат на повеќегодишно истражување на д-р Драгана Костевска.",
         "stat1": "Поддржани лица",
         "stat2": "Успешни случаи",
         "programs-title": "Наши Програми",
         "prog1-title": "Психолошка поддршка",
-        "prog1-desc": "Советување, кризна интервенција и емоционална поддршка.",
+        "prog1-desc": "Советување, кризна интервенција и емоционална поддршка за преживеаните.",
         "prog2-title": "Правна помош",
-        "prog2-desc": "Правно застапување и помош во постапки.",
+        "prog2-desc": "Правно застапување и помош во сите постапки.",
         "prog3-title": "Реинтеграција",
-        "prog3-desc": "Поддршка за враќање во нормален живот и општество.",
+        "prog3-desc": "Поддршка за враќање во нормален живот и општество со достоинство.",
+        "projects-title": "Наши Проекти",
+        "projects-subtitle": "Избрани проекти кои ја покажуваат нашата посветеност и влијание.",
+        "proj1-title": "Рехабилитација на жени затворенички",
+        "proj1-desc": "Проект спроведен во соработка со Управата за извршување на санкции на Република Северна Македонија, фокусиран на рехабилитација и поддршка на жени во затвор.",
+        "proj1-partner": "Партнер: Управа за извршување на санкции",
+        "proj2-title": "Превенција од виктимизација кај млади",
+        "proj2-desc": "Апликативни методи за превенција од виктимизација кај млади во општина Охрид. Финансиран од ЕУ преку програмата ReLOaD2 што ја спроведува УНДП.",
+        "proj2-partner": "Финансиер: ЕУ / УНДП – ReLOaD2",
         "help-title": "Барај Помош",
         "hotline": "24/7 Хотлајн",
         "confidential": "Повикот е <strong>анонимен</strong> и целосно <strong>доверлив</strong>.",
@@ -258,8 +385,8 @@
         "btn-donate-now": "Донирај сега",
         "contact-title": "Контактирај не",
         "contact-desc": "Секогаш сме тука да помогнеме.",
-        "phone": "Телефон:",
-        "email": "Е-маил:",
+        "phone": "Телефон",
+        "email": "Е-маил",
         "btn-send": "Испрати порака",
         "footer": "© 2026 VICTIM Skopje — Здружение за поддршка на жртви. Сите права задржани."
       }
@@ -270,7 +397,6 @@
     function toggleLanguage() {
       currentLang = currentLang === 'en' ? 'mk' : 'en';
       document.getElementById('current-lang').textContent = currentLang === 'en' ? '🇲🇰 Македонски' : '🇬🇧 English';
-
       document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.getAttribute('data-key');
         if (translations[currentLang][key]) {
@@ -281,6 +407,20 @@
 
     function setAmount(val) {
       document.getElementById('donation-amount').value = val;
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      menu.classList.toggle('hidden');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    }
+
+    function closeMobileMenu() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+      document.getElementById('menu-icon').classList.add('fa-bars');
+      document.getElementById('menu-icon').classList.remove('fa-times');
     }
   </script>
 </body>
